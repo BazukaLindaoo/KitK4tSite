@@ -3,16 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Grupo | KitK4t Hub</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Página oficial do KitK4t Hub. Junte-se à nossa equipe e acesse nosso script exclusivo para Roblox.">
+    
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self'; 
+                   style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; 
+                   font-src https://cdnjs.cloudflare.com; 
+                   script-src 'self' 'unsafe-inline';">
+    
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer" />
+          
     <style>
-        /* Variáveis de Cores */
+        /* Variáveis de Cores (Mantidas) */
         :root {
-            --cor-principal: #00bcd4; /* Azul Turquesa (Cyan) */
-            --cor-fundo-escuro: #121212; /* Cinza Escuro Quase Preto */
-            --cor-texto-claro: #f0f0f0; /* Cinza Muito Claro */
-            --cor-texto-secundario: #a0a0a0; /* Cinza Mais Suave */
-            --cor-fundo-card: #1e1e1e; /* Cinza Um Pouco Mais Claro para Cards */
+            --cor-principal: #00bcd4;
+            --cor-fundo-escuro: #121212;
+            --cor-texto-claro: #f0f0f0;
+            --cor-texto-secundario: #a0a0a0;
+            --cor-fundo-card: #1e1e1e;
+            --cor-sucesso: #4CAF50; /* Nova cor para feedback */
         }
 
         /* Estilos Globais e Reset Simples */
@@ -37,7 +52,7 @@
         }
 
         a:hover {
-            color: #0097a7; /* Tom um pouco mais escuro para hover */
+            color: #0097a7;
         }
 
         /* ---------------- Cabeçalho Fixo ---------------- */
@@ -52,6 +67,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
         }
 
         .logo {
@@ -73,7 +89,7 @@
             font-size: 1.1rem;
             padding: 0.5rem 1rem;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         nav ul li a:hover {
@@ -175,19 +191,26 @@
             margin: 40px auto;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             cursor: copy;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* MELHORIA: transição de sombra */
             position: relative;
+            border: 2px solid transparent; /* Para feedback de cópia */
         }
         
         .codigo-container:hover {
             background-color: #2a2a2a;
         }
         
+        /* MELHORIA UX: Feedback visual no clique */
+        .codigo-container.copiado {
+            border-color: var(--cor-sucesso);
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+        }
+
         /* Tooltip de Cópia */
         .codigo-container::after {
             content: "Clique para Copiar!";
             position: absolute;
-            bottom: -30px;
+            bottom: -35px; /* Ajustado para não sobrepor */
             left: 50%;
             transform: translateX(-50%);
             background-color: var(--cor-principal);
@@ -198,12 +221,20 @@
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
+            white-space: nowrap;
         }
 
         .codigo-container:hover::after {
             opacity: 1;
         }
         
+        /* Tooltip de "Copiado!" */
+        .codigo-container.copiado::after {
+            content: "Copiado!";
+            background-color: var(--cor-sucesso);
+            opacity: 1;
+        }
+
         .codigo-pre {
             white-space: pre-wrap;
             word-break: break-all;
@@ -218,16 +249,24 @@
             display: block;
             margin-bottom: 10px;
         }
+        
+        /* Oculta o strong em telas muito pequenas para dar espaço ao script */
+        @media (max-width: 400px) {
+            .codigo-pre strong {
+                display: none;
+            }
+        }
 
         .aviso-copia {
             font-size: 0.9rem;
             color: var(--cor-texto-secundario);
             margin-top: 10px;
             display: block;
+            height: 1.2em; /* Evita que o layout "pule" */
         }
         
         .aviso-copia.feedback {
-            color: #4CAF50; /* Verde para feedback */
+            color: var(--cor-sucesso);
             font-weight: bold;
         }
         
@@ -259,21 +298,39 @@
             margin-left: 10px;
         }
 
-        /* ---------------- Responsividade ---------------- */
+        /* ---------------- MELHORIA: Responsividade ---------------- */
         @media (max-width: 768px) {
+            /* CORREÇÃO: O menu anterior desaparecia em telas pequenas (display: none).
+              Agora ele quebra a linha e se centraliza.
+            */
             header {
+                flex-direction: column; /* Empilha o logo e a navegação */
                 padding: 1rem 5%;
             }
             
             .logo {
                 font-size: 1.2rem;
+                margin-bottom: 15px; /* Espaço entre o logo e os links */
             }
 
             nav ul {
-                /* Esconder menu em telas pequenas, aqui é apenas um exemplo minimalista */
-                display: none; 
+                flex-direction: column; /* Empilha os links */
+                width: 100%;
+                align-items: center; /* Centraliza os links */
+            }
+
+            nav ul li {
+                margin-left: 0; /* Remove margem lateral */
+                margin-bottom: 10px; /* Adiciona margem vertical */
+                width: 100%;
+                text-align: center;
             }
             
+            nav ul li a {
+                display: block; /* Faz o link ocupar toda a largura do <li> */
+            }
+
+            /* --- Ajustes gerais --- */
             h2 {
                 font-size: 2rem;
             }
@@ -283,7 +340,7 @@
             }
             
             .membros-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
             }
             
             .membro-card {
@@ -303,15 +360,8 @@
                 font-size: 1rem;
             }
             
-            /* Mostra os links na navegação em telas pequenas (opcional) */
-            nav ul {
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--cor-fundo-escuro);
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            .codigo-container::after {
+                bottom: -30px; /* Ajuste para não ficar tão longe */
             }
         }
     </style>
@@ -328,80 +378,89 @@
         </nav>
     </header>
 
-    <section id="quem-somos">
-        <h2 class="animate-text">Somos um grupo que foi criado com o intuito de ser os melhores.</h2>
-        
-        <ul class="membros-grid">
-            <li class="membro-card">
-                <i class="fas fa-user-secret"></i>
-                <strong>Bazuka</strong>
-                <span>Líder / Programador</span>
-            </li>
-            <li class="membro-card">
-                <i class="fas fa-feather-alt"></i>
-                <strong>Passarinho Da Quebrada</strong>
-                <span>Sub Líder</span>
-            </li>
-            <li class="membro-card">
-                <i class="fas fa-terminal"></i>
-                <strong>Shawn</strong>
-                <span>Ajudante / Programadora</span>
-            </li>
-            <li class="membro-card">
-                <i class="fas fa-laptop-code"></i>
-                <strong>Luscaa</strong>
-                <span>Programador</span>
-            </li>
-            <li class="membro-card">
-                <i class="fas fa-headset"></i>
-                <strong>Ryuzak</strong>
-                <span>Ajudante</span>
-            </li>
-        </ul>
-    </section>
+    <main>
+        <section id="quem-somos">
+            <h2 class="animate-text">Somos um grupo que foi criado com o intuito de ser os melhores.</h2>
+            
+            <ul class="membros-grid">
+                <li class="membro-card">
+                    <i class="fas fa-user-secret"></i>
+                    <strong>Bazuka</strong>
+                    <span>Líder / Programador</span>
+                </li>
+                <li class="membro-card">
+                    <i class="fas fa-feather-alt"></i>
+                    <strong>Passarinho Da Quebrada</strong>
+                    <span>Sub Líder</span>
+                </li>
+                <li class="membro-card">
+                    <i class="fas fa-terminal"></i>
+                    <strong>Shawn</strong>
+                    <span>Ajudante / Programadora</span>
+                </li>
+                <li class="membro-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <strong>Luscaa</strong>
+                    <span>Programador</span>
+                </li>
+                <li class="membro-card">
+                    <i class="fas fa-headset"></i>
+                    <strong>Ryuzak</strong>
+                    <span>Ajudante</span>
+                </li>
+            </ul>
+        </section>
 
-    <section id="script">
-        <h2>Nosso Script Exclusivo</h2>
-        
-        <div class="codigo-container" onclick="copiarScript()">
-            <pre class="codigo-pre">
-                <strong>Script aqui: </strong>
-                loadstring(game:HttpGet("https://scriptsbinsauth.pages.dev/api/scripts/094c448c-1d56-4004-b8ee-7e74b682f377/raw"))()
-            </pre>
-        </div>
-        
-        <span id="aviso-copia" class="aviso-copia">Clique no bloco acima para copiar o script!</span>
+        <section id="script">
+            <h2>Nosso Script Exclusivo</h2>
+            
+            <div class="codigo-container" onclick="copiarScript(this)">
+                <pre class="codigo-pre">
+                    <strong>Script aqui: </strong>
+                    <span id="script-content">loadstring(game:HttpGet("https://scriptsbinsauth.pages.dev/api/scripts/094c448c-1d56-4004-b8ee-7e74b682f377/raw"))()</span>
+                </pre>
+            </div>
+            
+            <span id="aviso-copia" class="aviso-copia">Clique no bloco acima para copiar o script!</span>
 
-        <a href="https://discord.gg/78yaDCbYuJ" target="_blank" class="btn-link">
-            Junte-se ao nosso Discord <i class="fab fa-discord"></i>
-        </a>
-    </section>
+            <a href="https://discord.gg/78yaDCbYuJ" target="_blank" rel="noopener noreferrer" class="btn-link">
+                Junte-se ao nosso Discord <i class="fab fa-discord"></i>
+            </a>
+        </section>
+    </main>
 
     <script>
-        // Função de Copiar Script
-        function copiarScript() {
-            const scriptText = 'loadstring(game:HttpGet("https://rawscripts.net/raw/Brookhaven-RP-KitKat-Hub-50157"))()';
+        // Função de Copiar Script (Revisada e Corrigida)
+        function copiarScript(containerElement) {
+            // CORREÇÃO DE BUG: O script copiado era diferente do exibido.
+            // Agora, ele lê dinamicamente o conteúdo do HTML.
+            const scriptElement = document.getElementById('script-content');
+            const scriptText = scriptElement.innerText.trim(); // Pega o texto limpo
             const aviso = document.getElementById('aviso-copia');
             
             navigator.clipboard.writeText(scriptText)
                 .then(() => {
-                    // Feedback visual
+                    // MELHORIA UX: Feedback visual no bloco e no texto
                     aviso.textContent = 'Script Copiado! Cole no seu executor.';
                     aviso.classList.add('feedback');
+                    containerElement.classList.add('copiado');
                     
-                    // Reverter o feedback após um tempo
+                    // Reverter o feedback após 2 segundos
                     setTimeout(() => {
                         aviso.textContent = 'Clique no bloco acima para copiar o script!';
                         aviso.classList.remove('feedback');
+                        containerElement.classList.remove('copiado');
                     }, 2000);
                 })
                 .catch(err => {
                     console.error('Erro ao copiar: ', err);
                     aviso.textContent = 'Erro ao copiar. Tente selecionar o texto manualmente.';
                     aviso.classList.add('feedback');
+                    containerElement.classList.add('erro-copia'); // (Você pode estilizar .erro-copia se quiser)
                     setTimeout(() => {
                         aviso.textContent = 'Clique no bloco acima para copiar o script!';
                         aviso.classList.remove('feedback');
+                        containerElement.classList.remove('erro-copia');
                     }, 3000);
                 });
         }
@@ -420,11 +479,10 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('animated');
-                        // Opcional: Desobservar depois de animar
-                        // observer.unobserve(entry.target); 
-                    } else {
-                        // Se quiser que a animação volte ao sair do viewport (descomente o trecho abaixo)
-                        // entry.target.classList.remove('animated'); 
+                        // MELHORIA DE PERFORMANCE:
+                        // Para de observar o elemento depois que ele já foi animado.
+                        // Economiza recursos do navegador.
+                        observer.unobserve(entry.target); 
                     }
                 });
             }, observerOptions);
@@ -434,7 +492,8 @@
             });
         });
         
-        // Implementação de Rolagem Suave (para navegadores antigos/garantia)
+        // Implementação de Rolagem Suave (Garantia)
+        // (Código original mantido, pois estava correto)
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 // Apenas se o atributo href começar com #
