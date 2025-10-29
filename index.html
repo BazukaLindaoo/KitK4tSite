@@ -39,10 +39,8 @@
             color: var(--cor-texto-claro);
             line-height: 1.6;
             overflow-x: hidden; 
-            cursor: url('https://i.imgur.com/vHq0L9J.png'), auto; /* Cursor de Morcego */
+            cursor: auto; /* CORREÇÃO: Removido cursor de imagem */
         }
-
-        /* ... (Estilos do Cabeçalho, Seções, Cards, Botões - Nenhuma mudança aqui) ... */
         
         a { color: var(--cor-principal); text-decoration: none; transition: color 0.3s ease; }
         a:hover { color: var(--cor-destaque-halloween); }
@@ -63,7 +61,21 @@
         .membro-card strong { display: block; font-size: 1.3rem; color: var(--cor-texto-claro); }
         .membro-card span { display: block; font-size: 0.9rem; color: var(--cor-texto-secundario); }
         #script { text-align: center; }
-        .codigo-container { background-color: var(--cor-fundo-card); padding: 30px; border-radius: 15px; max-width: 800px; width: 90%; margin: 40px auto; box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); cursor: url('https://i.imgur.com/uG9Xf7y.png'), copy; transition: background-color 0.3s ease, box-shadow 0.3s ease; position: relative; border: 2px solid transparent; }
+        
+        .codigo-container { 
+            background-color: var(--cor-fundo-card); 
+            padding: 30px; 
+            border-radius: 15px; 
+            max-width: 800px; 
+            width: 90%; 
+            margin: 40px auto; 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); 
+            cursor: copy; /* CORREÇÃO: Removido cursor de imagem */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            border: 2px solid transparent; 
+        }
+        
         .codigo-container:hover { background-color: #3a3a3a; box-shadow: 0 0 25px rgba(255, 127, 0, 0.4); }
         .codigo-container.copiado { border-color: var(--cor-sucesso); box-shadow: 0 0 15px rgba(76, 175, 80, 0.5); }
         .codigo-container::after { content: "Clique para Copiar!"; position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%); background-color: var(--cor-principal); color: var(--cor-fundo-escuro); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; white-space: nowrap; }
@@ -74,12 +86,29 @@
         @media (max-width: 400px) { .codigo-pre strong { display: none; } }
         .aviso-copia { font-size: 0.9rem; color: var(--cor-texto-secundario); margin-top: 10px; display: block; height: 1.2em; }
         .aviso-copia.feedback { color: var(--cor-sucesso); font-weight: bold; }
-        .btn-link { display: inline-block; background-color: var(--cor-principal); color: var(--cor-fundo-escuro); padding: 15px 30px; margin-top: 40px; border-radius: 50px; font-size: 1.1rem; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: url('https://i.imgur.com/uG9Xf7y.png'), pointer; box-shadow: 0 5px 15px rgba(255, 127, 0, 0.4); transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; }
+        
+        .btn-link { 
+            display: inline-block; 
+            background-color: var(--cor-principal); 
+            color: var(--cor-fundo-escuro); 
+            padding: 15px 30px; 
+            margin-top: 40px; 
+            border-radius: 50px; 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            letter-spacing: 1px; 
+            text-transform: uppercase; 
+            border: none; 
+            cursor: pointer; /* CORREÇÃO: Removido cursor de imagem */
+            box-shadow: 0 5px 15px rgba(255, 127, 0, 0.4); 
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; 
+        }
+        
         .btn-link:hover { background-color: var(--cor-destaque-halloween); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(163, 0, 163, 0.6); }
         .btn-link i { margin-left: 10px; }
 
 
-        /* ---------------- Efeitos de Halloween ---------------- */
+        /* ---------------- Efeitos de Halloween (CORREÇÃO) ---------------- */
         .halloween-effect {
             position: fixed;
             top: -50px; 
@@ -87,6 +116,8 @@
             pointer-events: none; 
             animation: fall linear infinite;
             z-index: 999; 
+            /* CORREÇÃO: Sem background-image, width, ou height. 
+               O tamanho será controlado pelo font-size no JS */
         }
 
         @keyframes fall {
@@ -115,6 +146,7 @@
             .codigo-pre strong { font-size: 1.3rem; }
             .btn-link { padding: 12px 25px; font-size: 1rem; }
             .codigo-container::after { bottom: -30px; }
+            /* CORREÇÃO: Garantir que cursores padrão voltem no mobile */
             body { cursor: auto; }
             .codigo-container { cursor: copy; }
             .btn-link { cursor: pointer; }
@@ -162,22 +194,31 @@
     </main>
 
     <script>
-        // Imagens de abóboras e morcegos (URLs do Imgur)
-        const halloweenImages = [
-            { class: 'pumpkin', url: 'https://i.imgur.com/K3fF4mS.png', size: 30 }, // Abóbora
-            { class: 'bat', url: 'https://i.imgur.com/o72n3k7.png', size: 40 }    // Morcego
+        // ===============================================
+        // CORREÇÃO: Usando Emojis em vez de Imagens
+        // ===============================================
+        const halloweenEmojis = [
+            { emoji: '🎃', size: 30 }, // Abóbora
+            { emoji: '🦇', size: 40 }  // Morcego
         ];
 
         function createHalloweenEffect() {
-            const randomImage = halloweenImages[Math.floor(Math.random() * halloweenImages.length)];
+            // Escolhe aleatoriamente entre abóbora e morcego
+            const randomItem = halloweenEmojis[Math.floor(Math.random() * halloweenEmojis.length)];
             
-            const effect = document.createElement('img');
-            effect.src = randomImage.url;
+            // Cria um <div> (que pode conter texto/emoji)
+            const effect = document.createElement('div');
+            
+            // Adiciona a classe de animação
             effect.classList.add('halloween-effect');
             
-            effect.style.width = `${randomImage.size}px`;
-            effect.style.height = `${randomImage.size}px`;
+            // Define o conteúdo como o emoji
+            effect.textContent = randomItem.emoji;
+            
+            // Define o tamanho do emoji
+            effect.style.fontSize = `${randomItem.size}px`;
 
+            // Posição inicial e animação (igual a antes)
             const startX = Math.random() * window.innerWidth;
             effect.style.left = `${startX}px`;
             
@@ -189,19 +230,19 @@
 
             document.body.appendChild(effect);
 
+            // Remove o elemento depois que a animação terminar
             effect.addEventListener('animationend', () => {
                 effect.remove();
             });
         }
+        // ===============================================
+        // FIM DA CORREÇÃO
+        // ===============================================
 
-        // ===============================================
-        // AQUI ESTÁ A MUDANÇA
-        // ===============================================
-        // Gera um novo efeito a cada 1.5 segundo (ANTES ERA 500)
+        // Gera um novo efeito a cada 1.5 segundo (Mantido)
         setInterval(createHalloweenEffect, 1500); 
-        // ===============================================
 
-        // Função de Copiar Script
+        // Função de Copiar Script (Sem mudanças)
         function copiarScript(containerElement) {
             const scriptElement = document.getElementById('script-content');
             const scriptText = scriptElement.innerText.trim(); 
@@ -227,12 +268,12 @@
                     setTimeout(() => {
                         aviso.textContent = 'Clique no bloco acima para copiar o script!';
                         aviso.classList.remove('feedback');
-                        containerElement.classList.remove('erro-copia');
+                        containerElement.classList.remove('erro-a-copiar');
                     }, 3000);
                 });
         }
         
-        // Função para Animações Suaves
+        // Função para Animações Suaves (Sem mudanças)
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('section');
             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
@@ -247,7 +288,7 @@
             sections.forEach(section => { observer.observe(section); });
         });
         
-        // Rolagem Suave
+        // Rolagem Suave (Sem mudanças)
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 if (this.getAttribute('href').startsWith('#')) {
