@@ -39,7 +39,7 @@
             color: var(--cor-texto-claro);
             line-height: 1.6;
             overflow-x: hidden; 
-            cursor: auto; /* CORREÇÃO: Removido cursor de imagem */
+            cursor: auto; 
         }
         
         a { color: var(--cor-principal); text-decoration: none; transition: color 0.3s ease; }
@@ -70,7 +70,7 @@
             width: 90%; 
             margin: 40px auto; 
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); 
-            cursor: copy; /* CORREÇÃO: Removido cursor de imagem */
+            cursor: copy; 
             transition: background-color 0.3s ease, box-shadow 0.3s ease; 
             position: relative; 
             border: 2px solid transparent; 
@@ -99,7 +99,7 @@
             letter-spacing: 1px; 
             text-transform: uppercase; 
             border: none; 
-            cursor: pointer; /* CORREÇÃO: Removido cursor de imagem */
+            cursor: pointer; 
             box-shadow: 0 5px 15px rgba(255, 127, 0, 0.4); 
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; 
         }
@@ -108,7 +108,7 @@
         .btn-link i { margin-left: 10px; }
 
 
-        /* ---------------- Efeitos de Halloween (CORREÇÃO) ---------------- */
+        /* ---------------- Efeitos de Halloween ---------------- */
         .halloween-effect {
             position: fixed;
             top: -50px; 
@@ -116,8 +116,6 @@
             pointer-events: none; 
             animation: fall linear infinite;
             z-index: 999; 
-            /* CORREÇÃO: Sem background-image, width, ou height. 
-               O tamanho será controlado pelo font-size no JS */
         }
 
         @keyframes fall {
@@ -146,7 +144,6 @@
             .codigo-pre strong { font-size: 1.3rem; }
             .btn-link { padding: 12px 25px; font-size: 1rem; }
             .codigo-container::after { bottom: -30px; }
-            /* CORREÇÃO: Garantir que cursores padrão voltem no mobile */
             body { cursor: auto; }
             .codigo-container { cursor: copy; }
             .btn-link { cursor: pointer; }
@@ -194,31 +191,35 @@
     </main>
 
     <script>
-        // ===============================================
-        // CORREÇÃO: Usando Emojis em vez de Imagens
-        // ===============================================
+        // Usando Emojis
         const halloweenEmojis = [
             { emoji: '🎃', size: 30 }, // Abóbora
             { emoji: '🦇', size: 40 }  // Morcego
         ];
+        
+        // ===============================================
+        // AQUI ESTÁ A MUDANÇA
+        // ===============================================
+        // Define um limite máximo de emojis na tela
+        const MAX_EMOJIS_NA_TELA = 15;
 
         function createHalloweenEffect() {
+            // VERIFICAÇÃO: Se já atingiu o limite, não cria mais
+            if (document.querySelectorAll('.halloween-effect').length >= MAX_EMOJIS_NA_TELA) {
+                return; // Para a execução da função aqui
+            }
+            // ===============================================
+
             // Escolhe aleatoriamente entre abóbora e morcego
             const randomItem = halloweenEmojis[Math.floor(Math.random() * halloweenEmojis.length)];
             
             // Cria um <div> (que pode conter texto/emoji)
             const effect = document.createElement('div');
             
-            // Adiciona a classe de animação
             effect.classList.add('halloween-effect');
-            
-            // Define o conteúdo como o emoji
             effect.textContent = randomItem.emoji;
-            
-            // Define o tamanho do emoji
             effect.style.fontSize = `${randomItem.size}px`;
 
-            // Posição inicial e animação (igual a antes)
             const startX = Math.random() * window.innerWidth;
             effect.style.left = `${startX}px`;
             
@@ -235,9 +236,6 @@
                 effect.remove();
             });
         }
-        // ===============================================
-        // FIM DA CORREÇÃO
-        // ===============================================
 
         // Gera um novo efeito a cada 1.5 segundo (Mantido)
         setInterval(createHalloweenEffect, 1500); 
@@ -268,7 +266,7 @@
                     setTimeout(() => {
                         aviso.textContent = 'Clique no bloco acima para copiar o script!';
                         aviso.classList.remove('feedback');
-                        containerElement.classList.remove('erro-a-copiar');
+                        containerElement.classList.remove('erro-copia');
                     }, 3000);
                 });
         }
