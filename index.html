@@ -29,20 +29,22 @@
         /* Dificulta o download direto ao carregar a imagem como fundo */
         .conteudo-protegido {
             height: 300px;
-            width: 600px;
-            /* **Mude para o seu arquivo de imagem** (Certifique-se de que a imagem está na mesma pasta) */
-            background-image: url('sua-imagem-protegida.jpg'); 
-            background-size: cover;
+            /* CORREÇÃO 1: Largura adaptável para celular */
+            max-width: 600px; 
+            width: 90%; 
+            /* CORREÇÃO 2: Seu arquivo de imagem */
+            background-image: url('1000028600.jpg'); 
+            background-size: cover; /* Faz a imagem cobrir o bloco */
             background-position: center;
             border: 5px solid #004d99;
             margin: 20px auto;
             padding: 10px;
             
             /* Propriedades para desabilitar a seleção de texto dentro deste elemento */
-            -webkit-user-select: none; /* Safari */
-            -moz-user-select: none;    /* Firefox */
-            -ms-user-select: none;      /* IE/Edge */
-            user-select: none;          /* Padrão */
+            -webkit-user-select: none; 
+            -moz-user-select: none;    
+            -ms-user-select: none;      
+            user-select: none;          
         }
 
         .conteudo-protegido h2,
@@ -106,34 +108,23 @@
     </footer>
 
     <script>
-        // Desabilita o clique direito (já definido no HTML, mas aqui é um reforço)
         document.addEventListener('contextmenu', event => event.preventDefault());
-
-        // Desabilita a seleção de texto em todo o documento
         document.body.style.userSelect = 'none';
 
-        // Desabilita a cópia (Ctrl+C ou Cmd+C)
         document.addEventListener('copy', (event) => {
             event.preventDefault();
             alert('A cópia do conteúdo deste site está desabilitada.');
         });
 
-        // Bloqueia teclas comuns de inspeção de código/fonte
         document.onkeydown = function(e) {
-
-            // 123 = F12 (Ferramentas de Desenvolvedor)
-            if(e.keyCode == 123) {
+            if(e.keyCode == 123) { // F12
                 return false;
             }
-
-            // 73 = I (para Ctrl+Shift+I)
-            // 74 = J (para Ctrl+Shift+J)
-            // 85 = U (para Ctrl+U, que abre o Código-Fonte da Página)
+            // Ctrl+Shift+I, J, U
             if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 85)) {
                 return false;
             }
-
-            // 67 = C (para Ctrl+C, que é a cópia)
+            // Ctrl+C
             if(e.ctrlKey && e.keyCode == 67) {
                 return false;
             }
