@@ -1,302 +1,143 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdo Protegido - Aviso de Direitos Autorais</title>
     
-    <title>Grupo | KitK4t Hub (Halloween Edition)</title>
-    <meta name="description" content="Página oficial do KitK4t Hub. Junte-se à nossa equipe e acesse nosso script exclusivo para Roblox. Edição Halloween!">
-    
-    <link rel="stylesheet" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
-          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" 
-          crossorigin="anonymous" 
-          referrerpolicy="no-referrer" />
-          
     <style>
-        /* Variáveis de Cores (Mantidas) */
-        :root {
-            --cor-principal: #ff7f00; 
-            --cor-fundo-escuro: #1a1a1a; 
-            --cor-texto-claro: #f0f0f0;
-            --cor-texto-secundario: #a0a0a0;
-            --cor-fundo-card: #2a2a2a; 
-            --cor-sucesso: #4CAF50; 
-            --cor-destaque-halloween: #a300a3; 
-        }
-
-        /* Estilos Globais */
-        * {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
+            background-color: #f4f4f4;
+            color: #333;
         }
 
-        body {
-            background-color: var(--cor-fundo-escuro);
-            color: var(--cor-texto-claro);
-            line-height: 1.6;
-            overflow-x: hidden; 
-            cursor: auto; 
+        header {
+            background-color: #004d99;
+            color: white;
+            padding: 20px;
+            text-align: center;
         }
-        
-        a { color: var(--cor-principal); text-decoration: none; transition: color 0.3s ease; }
-        a:hover { color: var(--cor-destaque-halloween); }
-        header { background-color: var(--cor-fundo-escuro); color: var(--cor-texto-claro); padding: 1rem 5%; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-bottom: 2px solid var(--cor-principal); }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--cor-principal); }
-        nav ul { list-style: none; display: flex; }
-        nav ul li { margin-left: 20px; }
-        nav ul li a { font-size: 1.1rem; padding: 0.5rem 1rem; border-radius: 5px; transition: background-color 0.3s ease, color 0.3s ease; }
-        nav ul li a:hover { background-color: rgba(255, 127, 0, 0.2); color: var(--cor-destaque-halloween); }
-        section { padding: 100px 5%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transform: translateY(20px); transition: opacity 1s ease-out, transform 1s ease-out; position: relative; z-index: 1; }
-        .animated { opacity: 1; transform: translateY(0); }
-        h2 { font-size: 2.5rem; margin-bottom: 40px; color: var(--cor-principal); text-align: center; font-weight: 300; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); }
-        #quem-somos h2 { font-size: 3rem; color: var(--cor-texto-claro); border-bottom: 2px solid var(--cor-destaque-halloween); padding-bottom: 10px; margin-bottom: 60px; font-weight: 500; }
-        .membros-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1200px; width: 100%; list-style: none; }
-        .membro-card { background-color: var(--cor-fundo-card); border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid var(--cor-fundo-card); }
-        .membro-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(255, 127, 0, 0.3); border-color: var(--cor-principal); }
-        .membro-card i { font-size: 3rem; color: var(--cor-principal); margin-bottom: 15px; display: block; }
-        .membro-card strong { display: block; font-size: 1.3rem; color: var(--cor-texto-claro); }
-        .membro-card span { display: block; font-size: 0.9rem; color: var(--cor-texto-secundario); }
-        #script { text-align: center; }
-        
-        .codigo-container { 
-            background-color: var(--cor-fundo-card); 
-            padding: 30px; 
-            border-radius: 15px; 
-            max-width: 800px; 
-            width: 90%; 
-            margin: 40px auto; 
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); 
-            cursor: copy; 
-            transition: background-color 0.3s ease, box-shadow 0.3s ease; 
-            position: relative; 
-            border: 2px solid transparent; 
-        }
-        
-        .codigo-container:hover { background-color: #3a3a3a; box-shadow: 0 0 25px rgba(255, 127, 0, 0.4); }
-        .codigo-container.copiado { border-color: var(--cor-sucesso); box-shadow: 0 0 15px rgba(76, 175, 80, 0.5); }
-        .codigo-container::after { content: "Clique para Copiar!"; position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%); background-color: var(--cor-principal); color: var(--cor-fundo-escuro); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; white-space: nowrap; }
-        .codigo-container:hover::after { opacity: 1; }
-        .codigo-container.copiado::after { content: "Copiado!"; background-color: var(--cor-sucesso); opacity: 1; }
-        .codigo-pre { white-space: pre-wrap; word-break: break-all; text-align: center; font-size: 1.2rem; color: var(--cor-texto-claro); }
-        .codigo-pre strong { font-size: 1.5rem; color: var(--cor-principal); display: block; margin-bottom: 10px; }
-        @media (max-width: 400px) { .codigo-pre strong { display: none; } }
-        .aviso-copia { font-size: 0.9rem; color: var(--cor-texto-secundario); margin-top: 10px; display: block; height: 1.2em; }
-        .aviso-copia.feedback { color: var(--cor-sucesso); font-weight: bold; }
-        
-        .btn-link { 
-            display: inline-block; 
-            background-color: var(--cor-principal); 
-            color: var(--cor-fundo-escuro); 
-            padding: 15px 30px; 
-            margin-top: 40px; 
-            border-radius: 50px; 
-            font-size: 1.1rem; 
-            font-weight: bold; 
-            letter-spacing: 1px; 
-            text-transform: uppercase; 
-            border: none; 
-            cursor: pointer; 
-            box-shadow: 0 5px 15px rgba(255, 127, 0, 0.4); 
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; 
-        }
-        
-        .btn-link:hover { background-color: var(--cor-destaque-halloween); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(163, 0, 163, 0.6); }
-        .btn-link i { margin-left: 10px; }
 
+        main {
+            padding: 20px;
+            padding-bottom: 70px; /* Espaço para o footer fixo */
+        }
 
-        /* ---------------- Efeitos de Halloween ---------------- */
-        .halloween-effect {
+        /* Dificulta o download direto ao carregar a imagem como fundo */
+        .conteudo-protegido {
+            height: 300px;
+            width: 600px;
+            /* **Mude para o seu arquivo de imagem** (Certifique-se de que a imagem está na mesma pasta) */
+            background-image: url('sua-imagem-protegida.jpg'); 
+            background-size: cover;
+            background-position: center;
+            border: 5px solid #004d99;
+            margin: 20px auto;
+            padding: 10px;
+            
+            /* Propriedades para desabilitar a seleção de texto dentro deste elemento */
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none;    /* Firefox */
+            -ms-user-select: none;      /* IE/Edge */
+            user-select: none;          /* Padrão */
+        }
+
+        .conteudo-protegido h2,
+        .conteudo-protegido p {
+            color: white;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        /* Estilo para o aviso de direitos autorais */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
             position: fixed;
-            top: -50px; 
-            left: 0;
-            pointer-events: none; 
-            animation: fall linear infinite;
-            z-index: 999; 
+            bottom: 0;
+            width: 100%;
+            font-size: 0.8em;
         }
 
-        @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg); 
-                opacity: 0;
-            }
-        }
-
-        /* ---------------- Responsividade ---------------- */
-        @media (max-width: 768px) {
-            header { flex-direction: column; padding: 1rem 5%; }
-            .logo { font-size: 1.2rem; margin-bottom: 15px; }
-            nav ul { flex-direction: column; width: 100%; align-items: center; }
-            nav ul li { margin-left: 0; margin-bottom: 10px; width: 100%; text-align: center; }
-            nav ul li a { display: block; }
-            h2 { font-size: 2rem; }
-            #quem-somos h2 { font-size: 2.5rem; }
-            .membros-grid { grid-template-columns: 1fr; }
-            .membro-card { padding: 15px; }
-            .codigo-pre { font-size: 1rem; }
-            .codigo-pre strong { font-size: 1.3rem; }
-            .btn-link { padding: 12px 25px; font-size: 1rem; }
-            .codigo-container::after { bottom: -30px; }
-            body { cursor: auto; }
-            .codigo-container { cursor: copy; }
-            .btn-link { cursor: pointer; }
-            .halloween-effect { display: none; }
+        /* Dificulta a seleção de texto em elementos de código específicos */
+        .nao-selecionavel {
+            -webkit-user-select: none; 
+            -moz-user-select: none;    
+            -ms-user-select: none;      
+            user-select: none;          
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            overflow-x: auto;
         }
     </style>
 </head>
-<body>
+
+<body oncontextmenu="return false">
 
     <header>
-        <div class="logo">Equipe KitK4t Hub</div>
-        <nav>
-            <ul>
-                <li><a href="#quem-somos">Quem somos</a></li>
-                <li><a href="#script">Script</a></li>
-            </ul>
-        </nav>
+        <h1>Conteúdo com Direitos Autorais Reservados</h1>
     </header>
 
     <main>
-        <section id="quem-somos">
-            <h2 class="animate-text">Somos um grupo que foi criado com o intuito de ser os melhores.</h2>
-            <ul class="membros-grid">
-                <li class="membro-card"><i class="fas fa-user-secret"></i><strong>Bazuka</strong><span>Líder / Programador</span></li>
-                <li class="membro-card"><i class="fas fa-feather-alt"></i><strong>Passarinho Da Quebrada</strong><span>Sub Líder</span></li>
-                <li class="membro-card"><i class="fas fa-terminal"></i><strong>Shawn</strong><span>Ajudante / Programadora</span></li>
-                <li class="membro-card"><i class="fas fa-laptop-code"></i><strong>Luscaa</strong><span>Programador</span></li>
-                <li class="membro-card"><i class="fas fa-headset"></i><strong>Ryuzak</strong><span>Ajudante</span></li>
-            </ul>
-        </section>
+        <div class="conteudo-protegido">
+            <h2>Nossa Imagem Principal</h2>
+            <p>Este texto também está protegido contra seleção e cópia.</p>
+        </div>
 
-        <section id="script">
-            <h2>Nosso Script Exclusivo</h2>
-            <div class="codigo-container" onclick="copiarScript(this)">
-                <pre class="codigo-pre">
-                    <strong>Script aqui: </strong>
-                    <span id="script-content">loadstring(game:HttpGet("https://scriptsbinsauth.pages.dev/api/scripts/094c448c-1d56-4004-b8ee-7e74b682f377/raw"))()</span>
-                </pre>
-            </div>
-            <span id="aviso-copia" class="aviso-copia">Clique no bloco acima para copiar o script!</span>
-            <a href="https://discord.gg/78yaDCbYuJ" target="_blank" rel="noopener noreferrer" class="btn-link">
-                Junte-se ao nosso Discord <i class="fab fa-discord"></i>
-            </a>
+        <section class="codigos">
+            <h3>Exemplo de Código:</h3>
+            <pre><code class="nao-selecionavel">function protegerConteudo() {
+    // Código de exemplo que está protegido contra seleção e cópia.
+    if (document.body.oncontextmenu === null) {
+        console.log("Proteção Básica Ativada!");
+    }
+}</code></pre>
         </section>
     </main>
 
+    <footer>
+        <p>&copy; 2025 Seu Nome/Empresa. Todos os direitos reservados. É proibida a cópia e o uso não autorizado de imagens e códigos.</p>
+    </footer>
+
     <script>
-        // Usando Emojis
-        const halloweenEmojis = [
-            { emoji: '🎃', size: 30 }, // Abóbora
-            { emoji: '🦇', size: 40 }  // Morcego
-        ];
-        
-        // ===============================================
-        // AQUI ESTÁ A MUDANÇA
-        // ===============================================
-        // Define um limite máximo de emojis na tela
-        const MAX_EMOJIS_NA_TELA = 15;
+        // Desabilita o clique direito (já definido no HTML, mas aqui é um reforço)
+        document.addEventListener('contextmenu', event => event.preventDefault());
 
-        function createHalloweenEffect() {
-            // VERIFICAÇÃO: Se já atingiu o limite, não cria mais
-            if (document.querySelectorAll('.halloween-effect').length >= MAX_EMOJIS_NA_TELA) {
-                return; // Para a execução da função aqui
+        // Desabilita a seleção de texto em todo o documento
+        document.body.style.userSelect = 'none';
+
+        // Desabilita a cópia (Ctrl+C ou Cmd+C)
+        document.addEventListener('copy', (event) => {
+            event.preventDefault();
+            alert('A cópia do conteúdo deste site está desabilitada.');
+        });
+
+        // Bloqueia teclas comuns de inspeção de código/fonte
+        document.onkeydown = function(e) {
+
+            // 123 = F12 (Ferramentas de Desenvolvedor)
+            if(e.keyCode == 123) {
+                return false;
             }
-            // ===============================================
 
-            // Escolhe aleatoriamente entre abóbora e morcego
-            const randomItem = halloweenEmojis[Math.floor(Math.random() * halloweenEmojis.length)];
-            
-            // Cria um <div> (que pode conter texto/emoji)
-            const effect = document.createElement('div');
-            
-            effect.classList.add('halloween-effect');
-            effect.textContent = randomItem.emoji;
-            effect.style.fontSize = `${randomItem.size}px`;
+            // 73 = I (para Ctrl+Shift+I)
+            // 74 = J (para Ctrl+Shift+J)
+            // 85 = U (para Ctrl+U, que abre o Código-Fonte da Página)
+            if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 85)) {
+                return false;
+            }
 
-            const startX = Math.random() * window.innerWidth;
-            effect.style.left = `${startX}px`;
-            
-            const animationDuration = 5 + Math.random() * 5; 
-            effect.style.animationDuration = `${animationDuration}s`;
-            
-            const animationDelay = Math.random() * 3; 
-            effect.style.animationDelay = `${animationDelay}s`;
-
-            document.body.appendChild(effect);
-
-            // Remove o elemento depois que a animação terminar
-            effect.addEventListener('animationend', () => {
-                effect.remove();
-            });
-        }
-
-        // Gera um novo efeito a cada 1.5 segundo (Mantido)
-        setInterval(createHalloweenEffect, 1500); 
-
-        // Função de Copiar Script (Sem mudanças)
-        function copiarScript(containerElement) {
-            const scriptElement = document.getElementById('script-content');
-            const scriptText = scriptElement.innerText.trim(); 
-            const aviso = document.getElementById('aviso-copia');
-            
-            navigator.clipboard.writeText(scriptText)
-                .then(() => {
-                    aviso.textContent = 'Script Copiado! Cole no seu executor.';
-                    aviso.classList.add('feedback');
-                    containerElement.classList.add('copiado');
-                    
-                    setTimeout(() => {
-                        aviso.textContent = 'Clique no bloco acima para copiar o script!';
-                        aviso.classList.remove('feedback');
-                        containerElement.classList.remove('copiado');
-                    }, 2000);
-                })
-                .catch(err => {
-                    console.error('Erro ao copiar: ', err);
-                    aviso.textContent = 'Erro ao copiar. Tente selecionar o texto manualmente.';
-                    aviso.classList.add('feedback');
-                    containerElement.classList.add('erro-copia'); 
-                    setTimeout(() => {
-                        aviso.textContent = 'Clique no bloco acima para copiar o script!';
-                        aviso.classList.remove('feedback');
-                        containerElement.classList.remove('erro-copia');
-                    }, 3000);
-                });
-        }
-        
-        // Função para Animações Suaves (Sem mudanças)
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('section');
-            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                        observer.unobserve(entry.target); 
-                    }
-                });
-            }, observerOptions);
-            sections.forEach(section => { observer.observe(section); });
-        });
-        
-        // Rolagem Suave (Sem mudanças)
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                if (this.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+            // 67 = C (para Ctrl+C, que é a cópia)
+            if(e.ctrlKey && e.keyCode == 67) {
+                return false;
+            }
+        };
     </script>
 </body>
 </html>
