@@ -1,251 +1,80 @@
-<!doctype html>
-
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Proteção de Imagens & Códigos</title>
-  <meta name="description" content="Página exemplo com técnicas e orientações para proteger imagens e códigos: marca d'água, prevenção de cópia, modelo de DMCA e boas práticas." />
-  <style>
-    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#6ee7b7}
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#071028 0%, #081a2b 100%);color:#e6eef6}
-    .wrap{max-width:1100px;margin:36px auto;padding:28px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
-    h1{margin:0;font-size:20px}
-    .tag{background:rgba(255,255,255,0.06);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
-    .grid{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:22px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);padding:18px;border-radius:12px}
-    .features{display:grid;gap:12px}
-    .feature{display:flex;gap:12px;align-items:flex-start}
-    .feature b{display:block}
-    .image-protect{position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
-    .image-protect img{display:block;width:100%;height:auto;user-select:none}
-    .watermark{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-end;padding:12px;pointer-events:none}
-    .watermark .badge{background:rgba(0,0,0,0.45);backdrop-filter:blur(4px);padding:6px 10px;border-radius:6px;font-size:13px;color:#dbeef0}
-    .ghost-overlay{position:absolute;inset:0;background:linear-gradient(135deg, rgba(255,255,255,0.01), transparent 30%);mix-blend-mode:overlay;pointer-events:none}
-    .controls{display:flex;gap:8px;margin-top:12px}
-    button{background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit;padding:8px 10px;border-radius:8px;cursor:pointer}
-    button.primary{background:linear-gradient(90deg,var(--accent),#4fd7a7);color:#052017;border:none}
-    .notice{font-size:13px;color:var(--muted);margin-top:10px}
-    pre{background:rgba(0,0,0,0.25);padding:12px;border-radius:8px;overflow:auto;font-size:13px}
-    code{white-space:pre-wrap}
-    .right{display:flex;flex-direction:column;gap:12px}
-    form label{display:block;font-size:13px;margin-bottom:6px}
-    input,textarea{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-    footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px}
-    @media (max-width:900px){.grid{grid-template-columns:1fr}.right{order:2}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proteção de Código — KitKatHub Security</title>
+<style>
+  body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#0c0c0d;
+    color:white;
+  }header { background:#111; padding:20px; text-align:center; font-size:22px; font-weight:bold; border-bottom:2px solid #222; }
+
+main { display:flex; padding:20px; gap:20px; flex-wrap:wrap; }
+
+.left, .right { flex:1; min-width:300px; }
+
+.card { background:#151515; padding:20px; border-radius:12px; margin-bottom:20px; border:1px solid #222; }
+
+h3 { margin:0 0 10px 0; }
+
+.protect-box { background:#0d0d0e; border:1px solid #222; border-radius:10px; padding:10px; margin-top:10px; position:relative; overflow:hidden; }
+
+.protect-box pre { white-space:pre-wrap; user-select:none; pointer-events:none; }
+
+/* Bloqueio de print */ @media print { body * { display:none !important; } }
+
+/* Bloqueio anti-inspecionar (parcial, apenas dificulta) */ body.no-select { -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; } </style>
+
 </head>
+<body class="no-select"><header>KitKatHub Security — Proteção de Código</header><main>
+  <section class="left">
+    <div class="card">
+      <h3>Proteção Ativa de Código</h3>
+      <p>Seu código ficará protegido contra cópia direta, print e seleção.</p><div class="protect-box">
+    <pre>// Exemplo de código protegido
 
-<body>
-  <div class="wrap">
-    <header>
-      <div>
-        <h1>Proteção de Imagens & Códigos <span class="tag">Modelo explicativo</span></h1>
-        <div class="notice">Use isso como base — combine com proteção no servidor, marcação legal e processos de DMCA.</div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-size:13px;color:var(--muted)">Versão: 1.0 • Feito para você</div>
-      </div>
-    </header>
+function test() print("Protected") end</pre> </div> </div>
 
-<div class="grid">
-  <main>
-    <section class="card">
-      <h2 style="margin-top:0">Visão geral</h2>
-      <p class="notice">Esta página demonstra técnicas front-end que dificultam cópia direta (desabilitar clique direito, arrastar, seleção), exibe marca d'água visual e fornece modelos legais para ações como DMCA. Lembre-se: tudo no cliente pode ser contornado.</p>
-
-      <div style="margin-top:14px" class="features">
-        <div class="feature"><div style="width:8px;height:8px;background:var(--accent);border-radius:3px;margin-top:6px"></div><div><b>Marca d'água visual</b><span class="notice">Renderiza sobre a imagem — evita uso casual.</span></div></div>
-        <div class="feature"><div style="width:8px;height:8px;background:#7cc7ff;border-radius:3px;margin-top:6px"></div><div><b>Prevenções básicas</b><span class="notice">Bloqueio de clique direito, arrastar e seleção do conteúdo.</span></div></div>
-        <div class="feature"><div style="width:8px;height:8px;background:#f7b267;border-radius:3px;margin-top:6px"></div><div><b>Processo legal</b><span class="notice">Modelo de e-mail DMCA incluso.</span></div></div>
-      </div>
-
-      <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
-
-      <h3>Exemplo — imagem protegida</h3>
-      <div class="image-protect" style="margin-top:10px">
-        <img id="sampleImg" src="https://cdn.discordapp.com/attachments/1425641580080922746/1440931060308250725/IMG-20251116-WA0056.jpg?ex=691ff31f&is=691ea19f&hm=e2b048c9fc7425aa6a90b502de696a988aa0802c7a08e773175426271b5cb447&" draggable="false">
-        <div class="ghost-overlay"></div>
-        <div class="watermark" aria-hidden="true">
-          <div class="badge">© kitkathub.vercel.com • Uso proibido sem permissão</div>
-        </div>
-      </div>
-
-      <div class="controls">
-        <button id="toggleWM">Ocultar/Mostrar Marca d'água</button>
-        <button id="downloadBtn" class="primary">Baixar (apenas amostra)</button>
-      </div>
-      <div class="notice">Proteja imagens de verdade usando marca d'água no servidor.</div>
-
-      <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
-
-      <h3>Protegendo código</h3>
-      <p class="notice">Melhor proteção: licença, ofuscação no build e controle de acesso ao repositório.</p>
-
-<pre><code id="sampleCode">
-// Exemplo de função pública (não coloque chaves aqui)
-function exemplo(){ console.log('Olá — código de exemplo'); }
-</code></pre>
-
-      <div style="display:flex;gap:8px;margin-top:8px">
-        <button id="copyCode">Copiar (permitido)</button>
-        <button id="obfuscate">Mostrar ofuscação sugerida</button>
-      </div>
-      <div id="obfNote" class="notice" style="display:none;margin-top:8px">Use esbuild/terser para produção.</div>
-
-    </section>
-
-    <section class="card" style="margin-top:14px">
-      <h3>Boas práticas</h3>
-      <ul class="notice">
-        <li>Armazene imagens originais fora do CDN público.</li>
-        <li>Use marca d'água única por usuário.</li>
-        <li>Inclua termos de uso e processo de denúncia.</li>
-        <li>Monitore publicações não autorizadas.</li>
-      </ul>
-    </section>
-
-  </main>
-
-  <aside class="right">
-
-    <!-- 🔰 SELOS DE SEGURANÇA ADICIONADOS AQUI -->
+  </section>  <aside class="right">
     <div class="card">
       <h3>Selos de Segurança</h3>
-      <div style="display:flex;flex-direction:column;gap:12px;margin-top:10px">
-
-        <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.04);padding:10px;border-radius:10px">
-          <img src="https://img.icons8.com/?size=100&id=59825&format=png" width="34" alt="Proteção">
-          <div>
-            <b>Proteção Ativa</b><br>
-            <small class="notice">Criptografia e verificação contínua.</small>
-          </div>
-        </div>
-
-        <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.04);padding:10px;border-radius:10px">
-          <img src="https://img.icons8.com/?size=100&id=59843&format=png" width="34" alt="Firewall">
-          <div>
-            <b>Firewall Web</b><br>
-            <small class="notice">Bloqueio de acessos suspeitos.</small>
-          </div>
-        </div>
-
-        <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.04);padding:10px;border-radius:10px">
-          <img src="https://img.icons8.com/?size=100&id=59828&format=png" width="34" alt="Crypto">
-          <div>
-            <b>Criptografia Ativa</b><br>
-            <small class="notice">Transmissão segura de dados.</small>
-          </div>
-        </div>
-
-      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:10px"><div style="display:flex;align-items:center;gap:10px;background:#1a1a1a;padding:10px;border-radius:10px">
+      <img src="https://img.icons8.com/?size=100&id=59825&format=png" width="34" height="34">
+      <div><b>Proteção Ativa</b><br><small>Monitoramento e bloqueio de ações suspeitas.</small></div>
     </div>
 
-    <div class="card">
-      <h3>Envio de denúncia / DMCA</h3>
-      <p class="notice">Preencha o formulário para gerar um e-mail DMCA.</p>
-
-      <form id="dmcaForm" onsubmit="return false">
-        <label for="name">Seu nome</label>
-        <input id="name" required>
-
-        <label for="email">Seu e-mail</label>
-        <input id="email" type="email" required>
-
-        <label for="url">URL do conteúdo infringente</label>
-        <input id="url" required>
-
-        <label for="desc">Descrição</label>
-        <textarea id="desc" rows="3" required></textarea>
-
-        <div style="display:flex;gap:8px;margin-top:10px">
-          <button id="generateMail">Gerar e-mail</button>
-          <button id="resetForm">Limpar</button>
-        </div>
-
-        <div id="mailPreview" style="display:none;margin-top:10px">
-          <label>Pré-visualização:</label>
-          <textarea id="mailText" rows="7"></textarea>
-        </div>
-      </form>
+    <div style="display:flex;align-items:center;gap:10px;background:#1a1a1a;padding:10px;border-radius:10px">
+      <img src="https://img.icons8.com/?size=100&id=59843&format=png" width="34" height="34">
+      <div><b>Firewall Web</b><br><small>Bloqueio automático de tentativas indevidas.</small></div>
     </div>
 
-    <div class="card">
-      <h3>Recursos técnicos</h3>
-      <ul class="notice">
-        <li>Controle de acesso com tokens.</li>
-        <li>Miniaturas públicas e download autenticado.</li>
-        <li>Marca d'água invisível.</li>
-      </ul>
+    <div style="display:flex;align-items:center;gap:10px;background:#1a1a1a;padding:10px;border-radius:10px">
+      <img src="https://img.icons8.com/?size=100&id=59828&format=png" width="34" height="34">
+      <div><b>Criptografia Local</b><br><small>Proteção avançada de conteúdo exibido.</small></div>
     </div>
-
-    <div class="card">
-      <h3>Limitações</h3>
-      <p class="notice">Tudo no cliente pode ser burlado. Use medidas técnicas + legais.</p>
-    </div>
-
-  </aside>
-</div>
-
-<footer>
-  © <span id="year"></span> kitkathub.vercel.com • Demonstração
-</footer>
 
   </div>
+</div>
 
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
+  </aside>
+</main><script>
+// Bloqueio de CTRL+C, CTRL+U, CTRL+S, F12 e seleção
+const blockKeys = ["s", "u", "c"];
 
-document.addEventListener('contextmenu', e=>e.preventDefault());
-document.addEventListener('dragstart', e=>e.preventDefault());
-document.addEventListener('selectstart', e=>{
-  if(e.target.tagName!=="INPUT" && e.target.tagName!=="TEXTAREA") e.preventDefault();
+document.addEventListener("keydown", function(e) {
+  if ((e.ctrlKey && blockKeys.includes(e.key.toLowerCase())) || e.key === "F12") {
+    e.preventDefault();
+  }
 });
 
-const wm = document.querySelector('.watermark');
-document.getElementById('toggleWM').addEventListener('click', ()=>{
-  wm.style.display = wm.style.display === 'none' ? 'flex' : 'none';
-});
+document.addEventListener("contextmenu", e => e.preventDefault());
 
-document.getElementById('downloadBtn').addEventListener('click', ()=>{
-  alert('Exemplo. Em produção, baixe via servidor.');
-});
+document.addEventListener("copy", e => e.preventDefault());
 
-document.getElementById('copyCode').addEventListener('click', ()=>{
-  navigator.clipboard.writeText(document.getElementById('sampleCode').innerText)
-  .then(()=>alert('Código copiado'));
-});
+document.addEventListener("cut", e => e.preventDefault());
 
-document.getElementById('obfuscate').addEventListener('click', ()=>{
-  document.getElementById('obfNote').style.display = 'block';
-});
-
-document.getElementById('generateMail').addEventListener('click', ()=>{
-  const name=document.getElementById('name').value.trim();
-  const email=document.getElementById('email').value.trim();
-  const url=document.getElementById('url').value.trim();
-  const desc=document.getElementById('desc').value.trim();
-
-  if(!name||!email||!url||!desc) return alert("Preencha tudo");
-
-  const body = `Eu, ${name}, declaro que sou o titular do conteúdo.\n\nConteúdo infringente: ${url}\n\nDescrição: ${desc}\n\nDeclaro sob pena de perjúrio que as informações são verdadeiras.`;
-
-  document.getElementById('mailText').value = "Assunto: Notificação DMCA\n\n" + body;
-  document.getElementById('mailPreview').style.display='block';
-
-  const mailto = `mailto:naotemsuporte@gmail.com?subject=DMCA&body=${encodeURIComponent(body)}`;
-  if(confirm("Abrir e-mail?")) window.location.href = mailto;
-});
-
-document.getElementById('resetForm').addEventListener('click', ()=>{
-  document.getElementById('dmcaForm').reset();
-  document.getElementById('mailPreview').style.display="none";
-});
-
-console.log("Nota: você não consegue derrubar, atacar, hackear nada.");
-</script>
-
-</body>
+document.addEventListener("paste", e => e.preventDefault());
+</script></body>
 </html>
