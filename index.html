@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ProteÃ§Ã£o de Imagens & CÃ³digos</title>
-  <meta name="description" content="PÃ¡gina exemplo com tÃ©cnicas e orientaÃ§Ãµes para proteger imagens e cÃ³digos: marca d'Ã¡gua, prevenÃ§Ã£o de cÃ³pia, modelo de DMCA e boas prÃ¡ticas." />
+  <title>Proteção de Imagens & Códigos</title>
+  <meta name="description" content="Página exemplo com técnicas e orientações para proteger imagens e códigos: marca d'água, prevenção de cópia, modelo de DMCA e boas práticas." />
   <style>
     :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#6ee7b7}
     *{box-sizing:border-box}
@@ -42,68 +42,68 @@
   <div class="wrap">
     <header>
       <div>
-        <h1>ProteÃ§Ã£o de Imagens & CÃ³digos <span class="tag">Modelo explicativo</span></h1>
-        <div class="notice">Use isso como base â€” combine com proteÃ§Ã£o no servidor, marcaÃ§Ã£o legal e processos de DMCA.</div>
+        <h1>Proteção de Imagens & Códigos <span class="tag">Modelo explicativo</span></h1>
+        <div class="notice">Use isso como base — combine com proteção no servidor, marcação legal e processos de DMCA.</div>
       </div>
       <div style="text-align:right">
-        <div style="font-size:13px;color:var(--muted)">VersÃ£o: 1.0 â€¢ Feito para vocÃª</div>
+        <div style="font-size:13px;color:var(--muted)">Versão: 1.0 • Feito para você</div>
       </div>
     </header>
 
 <div class="grid">
   <main>
     <section class="card">
-      <h2 style="margin-top:0">VisÃ£o geral</h2>
-      <p class="notice">Esta pÃ¡gina demonstra tÃ©cnicas front-end que dificultam cÃ³pia direta (desabilitar clique direito, arrastar, seleÃ§Ã£o), exibe marca d'Ã¡gua visual e fornece modelos legais para aÃ§Ãµes como DMCA. Lembre-se: tudo no cliente pode ser contornado.</p>
+      <h2 style="margin-top:0">Visão geral</h2>
+      <p class="notice">Esta página demonstra técnicas front-end que dificultam cópia direta (desabilitar clique direito, arrastar, seleção), exibe marca d'água visual e fornece modelos legais para ações como DMCA. Lembre-se: tudo no cliente pode ser contornado.</p>
 
       <div style="margin-top:14px" class="features">
-        <div class="feature"><div style="width:8px;height:8px;background:var(--accent);border-radius:3px;margin-top:6px"></div><div><b>Marca d'Ã¡gua visual</b><span class="notice">Renderiza sobre a imagem â€” evita uso casual.</span></div></div>
-        <div class="feature"><div style="width:8px;height:8px;background:#7cc7ff;border-radius:3px;margin-top:6px"></div><div><b>PrevenÃ§Ãµes bÃ¡sicas</b><span class="notice">Bloqueio de clique direito, arrastar e seleÃ§Ã£o do conteÃºdo.</span></div></div>
+        <div class="feature"><div style="width:8px;height:8px;background:var(--accent);border-radius:3px;margin-top:6px"></div><div><b>Marca d'água visual</b><span class="notice">Renderiza sobre a imagem — evita uso casual.</span></div></div>
+        <div class="feature"><div style="width:8px;height:8px;background:#7cc7ff;border-radius:3px;margin-top:6px"></div><div><b>Prevenções básicas</b><span class="notice">Bloqueio de clique direito, arrastar e seleção do conteúdo.</span></div></div>
         <div class="feature"><div style="width:8px;height:8px;background:#f7b267;border-radius:3px;margin-top:6px"></div><div><b>Processo legal</b><span class="notice">Modelo de e-mail DMCA incluso.</span></div></div>
       </div>
 
       <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
 
-      <h3>Exemplo â€” imagem protegida</h3>
+      <h3>Exemplo — imagem protegida</h3>
       <div class="image-protect" style="margin-top:10px">
         <img id="sampleImg" src="https://cdn.discordapp.com/attachments/1425641580080922746/1440931060308250725/IMG-20251116-WA0056.jpg?ex=691ff31f&is=691ea19f&hm=e2b048c9fc7425aa6a90b502de696a988aa0802c7a08e773175426271b5cb447&" draggable="false">
         <div class="ghost-overlay"></div>
         <div class="watermark" aria-hidden="true">
-          <div class="badge">Â© kitkathub.vercel.com â€¢ Uso proibido sem permissÃ£o</div>
+          <div class="badge">© kitkathub.vercel.com • Uso proibido sem permissão</div>
         </div>
       </div>
 
       <div class="controls">
-        <button id="toggleWM">Ocultar/Mostrar Marca d'Ã¡gua</button>
+        <button id="toggleWM">Ocultar/Mostrar Marca d'água</button>
         <button id="downloadBtn" class="primary">Baixar (apenas amostra)</button>
       </div>
-      <div class="notice">Proteja imagens de verdade usando marca d'Ã¡gua no servidor.</div>
+      <div class="notice">Proteja imagens de verdade usando marca d'água no servidor.</div>
 
       <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
 
-      <h3>Protegendo cÃ³digo</h3>
-      <p class="notice">Melhor proteÃ§Ã£o: licenÃ§a, ofuscaÃ§Ã£o no build e controle de acesso ao repositÃ³rio.</p>
+      <h3>Protegendo código</h3>
+      <p class="notice">Melhor proteção: licença, ofuscação no build e controle de acesso ao repositório.</p>
 
 <pre><code id="sampleCode">
-// Exemplo de funÃ§Ã£o pÃºblica (nÃ£o coloque chaves aqui)
-function exemplo(){ console.log('OlÃ¡ â€” cÃ³digo de exemplo'); }
+// Exemplo de função pública (não coloque chaves aqui)
+function exemplo(){ console.log('Olá — código de exemplo'); }
 </code></pre>
 
       <div style="display:flex;gap:8px;margin-top:8px">
         <button id="copyCode">Copiar (permitido)</button>
-        <button id="obfuscate">Mostrar ofuscaÃ§Ã£o sugerida</button>
+        <button id="obfuscate">Mostrar ofuscação sugerida</button>
       </div>
-      <div id="obfNote" class="notice" style="display:none;margin-top:8px">Use esbuild/terser para produÃ§Ã£o.</div>
+      <div id="obfNote" class="notice" style="display:none;margin-top:8px">Use esbuild/terser para produção.</div>
 
     </section>
 
     <section class="card" style="margin-top:14px">
-      <h3>Boas prÃ¡ticas</h3>
+      <h3>Boas práticas</h3>
       <ul class="notice">
-        <li>Armazene imagens originais fora do CDN pÃºblico.</li>
-        <li>Use marca d'Ã¡gua Ãºnica por usuÃ¡rio.</li>
-        <li>Inclua termos de uso e processo de denÃºncia.</li>
-        <li>Monitore publicaÃ§Ãµes nÃ£o autorizadas.</li>
+        <li>Armazene imagens originais fora do CDN público.</li>
+        <li>Use marca d'água única por usuário.</li>
+        <li>Inclua termos de uso e processo de denúncia.</li>
+        <li>Monitore publicações não autorizadas.</li>
       </ul>
     </section>
 
@@ -111,16 +111,16 @@ function exemplo(){ console.log('OlÃ¡ â€” cÃ³digo de exemplo'); }
 
   <aside class="right">
 
-    <!-- ðŸ”° SELOS DE SEGURANÃ‡A ADICIONADOS AQUI -->
+    <!-- 🔰 SELOS DE SEGURANÇA ADICIONADOS AQUI -->
     <div class="card">
-      <h3>Selos de SeguranÃ§a</h3>
+      <h3>Selos de Segurança</h3>
       <div style="display:flex;flex-direction:column;gap:12px;margin-top:10px">
 
         <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.04);padding:10px;border-radius:10px">
-          <img src="https://img.icons8.com/?size=100&id=59825&format=png" width="34" alt="ProteÃ§Ã£o">
+          <img src="https://img.icons8.com/?size=100&id=59825&format=png" width="34" alt="Proteção">
           <div>
-            <b>ProteÃ§Ã£o Ativa</b><br>
-            <small class="notice">Criptografia e verificaÃ§Ã£o contÃ­nua.</small>
+            <b>Proteção Ativa</b><br>
+            <small class="notice">Criptografia e verificação contínua.</small>
           </div>
         </div>
 
@@ -136,7 +136,7 @@ function exemplo(){ console.log('OlÃ¡ â€” cÃ³digo de exemplo'); }
           <img src="https://img.icons8.com/?size=100&id=59828&format=png" width="34" alt="Crypto">
           <div>
             <b>Criptografia Ativa</b><br>
-            <small class="notice">TransmissÃ£o segura de dados.</small>
+            <small class="notice">Transmissão segura de dados.</small>
           </div>
         </div>
 
@@ -144,8 +144,8 @@ function exemplo(){ console.log('OlÃ¡ â€” cÃ³digo de exemplo'); }
     </div>
 
     <div class="card">
-      <h3>Envio de denÃºncia / DMCA</h3>
-      <p class="notice">Preencha o formulÃ¡rio para gerar um e-mail DMCA.</p>
+      <h3>Envio de denúncia / DMCA</h3>
+      <p class="notice">Preencha o formulário para gerar um e-mail DMCA.</p>
 
       <form id="dmcaForm" onsubmit="return false">
         <label for="name">Seu nome</label>
@@ -154,10 +154,10 @@ function exemplo(){ console.log('OlÃ¡ â€” cÃ³digo de exemplo'); }
         <label for="email">Seu e-mail</label>
         <input id="email" type="email" required>
 
-        <label for="url">URL do conteÃºdo infringente</label>
+        <label for="url">URL do conteúdo infringente</label>
         <input id="url" required>
 
-        <label for="desc">DescriÃ§Ã£o</label>
+        <label for="desc">Descrição</label>
         <textarea id="desc" rows="3" required></textarea>
 
         <div style="display:flex;gap:8px;margin-top:10px">
@@ -166,31 +166,31 @@ function exemplo(){ console.log('OlÃ¡ â€” cÃ³digo de exemplo'); }
         </div>
 
         <div id="mailPreview" style="display:none;margin-top:10px">
-          <label>PrÃ©-visualizaÃ§Ã£o:</label>
+          <label>Pré-visualização:</label>
           <textarea id="mailText" rows="7"></textarea>
         </div>
       </form>
     </div>
 
     <div class="card">
-      <h3>Recursos tÃ©cnicos</h3>
+      <h3>Recursos técnicos</h3>
       <ul class="notice">
         <li>Controle de acesso com tokens.</li>
-        <li>Miniaturas pÃºblicas e download autenticado.</li>
-        <li>Marca d'Ã¡gua invisÃ­vel.</li>
+        <li>Miniaturas públicas e download autenticado.</li>
+        <li>Marca d'água invisível.</li>
       </ul>
     </div>
 
     <div class="card">
-      <h3>LimitaÃ§Ãµes</h3>
-      <p class="notice">Não tente fazer algo estou sempre de olho..</p>
+      <h3>Limitações</h3>
+      <p class="notice">Bazuka é o melhor!</p>
     </div>
 
   </aside>
 </div>
 
 <footer>
-  Â© <span id="year"></span> kitkathub.vercel.com â€¢ DemonstraÃ§Ã£o
+  © <span id="year"></span> kitkathub.vercel.com • Demonstração
 </footer>
 
   </div>
@@ -210,12 +210,12 @@ document.getElementById('toggleWM').addEventListener('click', ()=>{
 });
 
 document.getElementById('downloadBtn').addEventListener('click', ()=>{
-  alert('Exemplo. Em produÃ§Ã£o, baixe via servidor.');
+  alert('Exemplo. Em produção, baixe via servidor.');
 });
 
 document.getElementById('copyCode').addEventListener('click', ()=>{
   navigator.clipboard.writeText(document.getElementById('sampleCode').innerText)
-  .then(()=>alert('CÃ³digo copiado'));
+  .then(()=>alert('Código copiado'));
 });
 
 document.getElementById('obfuscate').addEventListener('click', ()=>{
@@ -230,9 +230,9 @@ document.getElementById('generateMail').addEventListener('click', ()=>{
 
   if(!name||!email||!url||!desc) return alert("Preencha tudo");
 
-  const body = `Eu, ${name}, declaro que sou o titular do conteÃºdo.\n\nConteÃºdo infringente: ${url}\n\nDescriÃ§Ã£o: ${desc}\n\nDeclaro sob pena de perjÃºrio que as informaÃ§Ãµes sÃ£o verdadeiras.`;
+  const body = `Eu, ${name}, declaro que sou o titular do conteúdo.\n\nConteúdo infringente: ${url}\n\nDescrição: ${desc}\n\nDeclaro sob pena de perjúrio que as informações são verdadeiras.`;
 
-  document.getElementById('mailText').value = "Assunto: NotificaÃ§Ã£o DMCA\n\n" + body;
+  document.getElementById('mailText').value = "Assunto: Notificação DMCA\n\n" + body;
   document.getElementById('mailPreview').style.display='block';
 
   const mailto = `mailto:naotemsuporte@gmail.com?subject=DMCA&body=${encodeURIComponent(body)}`;
@@ -244,7 +244,7 @@ document.getElementById('resetForm').addEventListener('click', ()=>{
   document.getElementById('mailPreview').style.display="none";
 });
 
-console.log("Nota: vocÃª nÃ£o consegue derrubar, atacar, hackear nada.");
+console.log("Nota: você não consegue derrubar, atacar, hackear nada.");
 </script>
 
 </body>
