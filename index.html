@@ -1,1 +1,215 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>P</title><style>:root{--b:#0f1724;--c:#0b1220;--m:#9aa4b2;--a:#6ee7b7}*{box-sizing:border-box}body{margin:0;font-family:sans-serif;background:linear-gradient(180deg,#071028,#081a2b);color:#e6eef6}button{border:none;padding:8px 10px;border-radius:8px;cursor:pointer}</style></head><body><div id="x"></div><script>(()=>{document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('dragstart',e=>e.preventDefault());document.addEventListener('selectstart',e=>{if(e.target.tagName!=='INPUT'&&e.target.tagName!=='TEXTAREA')e.preventDefault();});const a=document.createElement('pre');a.style.cssText='background:rgba(0,0,0,0.25);padding:12px;border-radius:8px;overflow:auto;font-size:13px;';a.innerText='function exemplo(){console.log("Olá — código de exemplo")}',document.body.appendChild(a);const b=document.createElement('button');b.textContent='Copiar Código';b.onclick=()=>{navigator.clipboard.writeText(a.innerText).then(()=>alert('Copiado!'))};document.body.appendChild(b);const c=document.createElement('button');c.textContent='Ofuscar';c.onclick=()=>{a.innerText=a.innerText.replace(/[a-zA-Z]/g,x=>String.fromCharCode(x.charCodeAt(0)+3))};document.body.appendChild(c);console.log('Proteção front-end ativa.');})();</script></body></html>
+<!--
+  Proteção de Imagens e Código
+  Arquivo: index.html
+  Descrição: Página de exemplo com técnicas de proteção de imagens e códigos (informativa).
+  Observação: nenhuma medida front-end é 100% segura — combine com medidas legais e servidor/DRM.
+--><!doctype html>
+
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proteção de Imagens & Códigos</title>
+  <meta name="description" content="Página exemplo com técnicas e orientações para proteger imagens e códigos: marca d'água, prevenção de cópia, modelo de DMCA e boas práticas." />
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#6ee7b7}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#071028 0%, #081a2b 100%);color:#e6eef6}
+    .wrap{max-width:1100px;margin:36px auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    h1{margin:0;font-size:20px}
+    .tag{background:rgba(255,255,255,0.06);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:22px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);padding:18px;border-radius:12px}
+    .features{display:grid;gap:12px}
+    .feature{display:flex;gap:12px;align-items:flex-start}
+    .feature b{display:block}
+    .image-protect{position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+    .image-protect img{display:block;width:100%;height:auto;user-select:none}
+    /* marca d'água CSS (sem alterar a imagem original) */
+    .watermark{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-end;padding:12px;pointer-events:none}
+    .watermark .badge{background:rgba(0,0,0,0.45);backdrop-filter:blur(4px);padding:6px 10px;border-radius:6px;font-size:13px;color:#dbeef0}
+    /* overlay anti-screenshot (nada garantido) */
+    .ghost-overlay{position:absolute;inset:0;background:linear-gradient(135deg, rgba(255,255,255,0.01), transparent 30%);mix-blend-mode:overlay;pointer-events:none}
+    .controls{display:flex;gap:8px;margin-top:12px}
+    button{background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit;padding:8px 10px;border-radius:8px;cursor:pointer}
+    button.primary{background:linear-gradient(90deg,var(--accent),#4fd7a7);color:#052017;border:none}
+    .notice{font-size:13px;color:var(--muted);margin-top:10px}
+    pre{background:rgba(0,0,0,0.25);padding:12px;border-radius:8px;overflow:auto;font-size:13px}
+    code{white-space:pre-wrap}
+    .right{display:flex;flex-direction:column;gap:12px}
+    form label{display:block;font-size:13px;margin-bottom:6px}
+    input,textarea{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.right{order:2}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Proteção de Imagens & Códigos <span class="tag">Modelo explicativo</span></h1>
+        <div class="notice">Use isso como base — combine com proteção no servidor, marcação legal e processos de DMCA.</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:13px;color:var(--muted)">Versão: 1.0 • Feito para você</div>
+      </div>
+    </header><div class="grid">
+  <main>
+    <section class="card">
+      <h2 style="margin-top:0">Visão geral</h2>
+      <p class="notice">Esta página demonstra técnicas front-end que dificultam cópia direta (desabilitar clique direito, arrastar, seleção), exibe marca d'água visual e fornece modelos legais para ações como DMCA. Lembre-se: tudo no cliente pode ser contornado; para proteção séria, use servidor, DRM, marcas d'água incorporadas e monitoramento.</p>
+
+      <div style="margin-top:14px" class="features">
+        <div class="feature"><div style="width:8px;height:8px;background:var(--accent);border-radius:3px;margin-top:6px"></div><div><b>Marca d'água visual</b><span class="notice">Renderiza sobre a imagem — evita uso casual.</span></div></div>
+        <div class="feature"><div style="width:8px;height:8px;background:#7cc7ff;border-radius:3px;margin-top:6px"></div><div><b>Prevenções básicas</b><span class="notice">Bloqueio de clique direto, arrastar e seleção do conteúdo (não é infalível).</span></div></div>
+        <div class="feature"><div style="width:8px;height:8px;background:#f7b267;border-radius:3px;margin-top:6px"></div><div><b>Processo legal</b><span class="notice">Modelo de e-mail para notificação / DMCA incluído no formulário.</span></div></div>
+      </div>
+
+      <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
+
+      <h3>Exemplo — imagem protegida</h3>
+      <div class="image-protect" style="margin-top:10px">
+        <img id="sampleImg" src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=1200&q=60" alt="Amostra" draggable="false">
+        <div class="ghost-overlay"></div>
+        <div class="watermark" aria-hidden="true">
+          <div class="badge">© kitkathub.vercel.com • Uso proibido sem permissão</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="toggleWM">Ocultar/Mostrar Marca d'água</button>
+        <button id="downloadBtn" class="primary">Baixar (apenas amostra)</button>
+      </div>
+      <div class="notice">Dica: para proteger realmente uma imagem, gere uma versão com marca d'água incorporada no servidor e armazene apenas miniaturas quando apropriado.</div>
+
+      <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
+
+      <h3>Protegendo código</h3>
+      <p class="notice">Para código, a melhor proteção é licença, ofuscação no build, e controle de acesso ao repositório. Evite expor chaves ou segredos no front-end.</p>
+
+      <pre><code id="sampleCode">// Exemplo de função pública (não coloque chaves aqui)
+
+function exemplo(){ console.log('Olá — código de exemplo'); } </code></pre> <div style="display:flex;gap:8px;margin-top:8px"> <button id="copyCode">Copiar (permitido)</button> <button id="obfuscate">Mostrar ofuscação sugerida</button> </div> <div id="obfNote" class="notice" style="display:none;margin-top:8px">Sugestão: use ferramentas de build (esbuild/terser) para minificar/ofuscar e controle de acesso no servidor.</div>
+
+</section>
+
+    <section class="card" style="margin-top:14px">
+      <h3>Boas práticas</h3>
+      <ul class="notice">
+        <li>Armazene imagens originais fora do CDN público quando preciso.</li>
+        <li>Use marca d'água única por usuário quando fizer entregas (esteganografia ou marca d'água visível).</li>
+        <li>Inclua termos de uso claros e um processo de denúncia.</li>
+        <li>Monitore a web (reverse image search) e envie notificações DMCA quando necessário.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <aside class="right">
+    <div class="card">
+      <h3>Envio de denúncia / DMCA</h3>
+      <p class="notice">Preencha o formulário abaixo para gerar uma notificação por e-mail (modelo).</p>
+      <form id="dmcaForm" onsubmit="return false">
+        <label for="name">Seu nome</label>
+        <input id="name" placeholder="Nome completo" required>
+        <label for="email">Seu e-mail</label>
+        <input id="email" type="email" placeholder="seu@exemplo.com" required>
+        <label for="url">URL do conteúdo infringente</label>
+        <input id="url" placeholder="https://site.com/arquivo-ou-pagina" required>
+        <label for="desc">Descrição breve</label>
+        <textarea id="desc" rows="3" placeholder="Explique por que é seu conteúdo..." required></textarea>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <button id="generateMail">Gerar e-mail</button>
+          <button id="resetForm">Limpar</button>
+        </div>
+        <div id="mailPreview" style="display:none;margin-top:10px">
+          <label>Pré-visualização do assunto e corpo:</label>
+          <textarea id="mailText" rows="7"></textarea>
+          <div style="margin-top:8px"><small class="notice">Copie e cole no seu cliente de e-mail ou use o link de mailto gerado.</small></div>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Recursos técnicos</h3>
+      <ul class="notice">
+        <li>Implementar controle de acesso via token assinado no servidor.</li>
+        <li>Fornecer miniaturas públicas e download autenticado.</li>
+        <li>Usar marca d'água imperceptível com ID do usuário (esteganografia).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Limitações</h3>
+      <p class="notice">Qualquer técnica client-side pode ser contornada por um usuário determinado. A combinação <b>técnica + legal + orgânica (monitoramento)</b> é a forma mais efetiva.</p>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  © <span id="year"></span> kitkathub.vercel.com• Modelo de demonstração — não substitui assessoria jurídica.
+</footer>
+
+  </div>  <script>
+    // Ano no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Prevenções básicas do cliente
+    document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+    document.addEventListener('copy', function(e){ /* opcional: bloquear cópia global se quiser */ });
+    document.addEventListener('dragstart', function(e){ e.preventDefault(); });
+    document.addEventListener('selectstart', function(e){ /* permite seleção em inputs apenas */ if(e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') e.preventDefault(); });
+
+    // Toggle marca d'água
+    const wm = document.querySelector('.watermark');
+    document.getElementById('toggleWM').addEventListener('click', ()=>{ wm.style.display = wm.style.display === 'none' ? 'flex' : 'none'; });
+
+    // Botão de download (apenas exemplo). Em produção, valide permissão no servidor.
+    document.getElementById('downloadBtn').addEventListener('click', ()=>{
+      alert('Este é um exemplo. Em um site real, o download deve ser controlado no servidor para proteger direitos.');
+    });
+
+    // Copiar código
+    document.getElementById('copyCode').addEventListener('click', ()=>{
+      const text = document.getElementById('sampleCode').innerText;
+      navigator.clipboard.writeText(text).then(()=>{
+        alert('Código copiado');
+      }).catch(()=>{ alert('Falha ao copiar'); });
+    });
+
+    // Mostrar sugestão de ofuscação
+    document.getElementById('obfuscate').addEventListener('click', ()=>{
+      document.getElementById('obfNote').style.display = 'block';
+    });
+
+    // DMCA: gerar e-mail
+    document.getElementById('generateMail').addEventListener('click', ()=>{
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const url = document.getElementById('url').value.trim();
+      const desc = document.getElementById('desc').value.trim();
+      if(!name||!email||!url||!desc){ alert('Preencha todos os campos'); return; }
+      const subject = encodeURIComponent('Notificação de Violação de Direitos Autorais (DMCA)');
+      const body = encodeURIComponent(
+        `Eu, ${name}, declaro que sou o titular dos direitos autorais do seguinte conteúdo (ou autorizado a agir em seu nome).\n\nConteúdo original: [descreva]\nLocal onde o conteúdo original está publicado: [inserir URL]\n\nConteúdo infringente: ${url}\n\nDescrição: ${desc}\n\nDeclaro, sob pena de perjúrio, que as informações acima são verdadeiras e que sou o proprietário dos direitos autorais ou estou autorizado a agir em nome do proprietário.`
+      );
+      const mailto = `mailto:contact@seusite.com?subject=${subject}&body=${body}`;
+      const preview = `Assunto: Notificação de Violação de Direitos Autorais (DMCA)\n\n${decodeURIComponent(body)}`;
+      document.getElementById('mailText').value = preview;
+      document.getElementById('mailPreview').style.display = 'block';
+      // criar link de mailto (o usuário pode clicar/copiar manualmente)
+      const win = confirm('Deseja abrir o cliente de e-mail agora? (isso abrirá um mailto com template)');
+      if(win) window.location.href = mailto;
+    });
+
+    // Botão limpar
+    document.getElementById('resetForm').addEventListener('click', ()=>{
+      document.getElementById('dmcaForm').reset();
+      document.getElementById('mailPreview').style.display = 'none';
+    });
+
+    // Observação para desenvolvedores
+    console.log('Nota: técnicas front-end ajudam, mas não garantem proteção total. Combine com controles no servidor, licenças e monitoramento.');
+  </script></body>
+</html>
